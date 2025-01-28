@@ -1,32 +1,117 @@
 "use client"
 import { UserButton } from "@clerk/nextjs";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-function Header() {
 
+function Header() {
     const path = usePathname();
     useEffect(() => {
         console.log(path);
-    },[])
+    }, []);
 
     return (
-        <div className='flex p-4 items-center justify-between bg-secondary shadow-sm'>
-            <Image src={'./lg.svg'} alt="logo" width={32} height={44} />
-            <ul className='hidden md:flex gap-6'>
-                <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer
-                    ${path=='/dashboard' && 'text-primary font-bold'}`}> Dashboard </li>
-                <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer
-                    ${path=='/dashboard/questions' && 'text-primary font-bold'}`}> Questions </li>
-                <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer
-                    ${path=='/dashboard/about' && 'text-primary font-bold'}`}> About </li>
-                <li className={`hover:text-primary hover:font-bold transition-all cursor-pointer
-                    ${path=='/dashboard/how' && 'text-primary font-bold'}`}> How it works? </li>
-            </ul>
-            <UserButton />
+        <div className='relative flex p-1 items-center justify-between border-b border-[#4845d2]/10 sticky top-0 z-50 shadow-lg overflow-hidden bg-black/90'>
+            {/* Glossy Animation Background */}
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-[#4845d2]/10 to-black animate-gradient"></div>
+                <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(72,69,210,0.1)_0%,_transparent_60%)] animate-pulse-slow"></div>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_50%,_rgba(72,69,210,0.15)_0%,_transparent_50%)] animate-ripple"></div>
+                </div>
+                <div className="absolute inset-0 backdrop-blur-sm"></div>
+            </div>
+
+             {/* Logo Section */}
+             <div className="flex items-center gap-3 relative z-10">
+                <div className="group bg-white/5 p-2 rounded-lg backdrop-blur-md">
+                    <img
+                        src={'./tempLogo.svg'}
+                        alt="logo"
+                        width={32}
+                        height={42}
+                        className="hover:scale-110 transition-all duration-300 hover:rotate-3 cursor-pointer" />
+                </div>
+                <span className="font-semibold text-white text-lg hidden sm:block hover:text-[#4845d2] transition-colors duration-300">
+                    VirtueHire
+                </span>
+            </div>
+
+            <nav className='hidden md:block relative'>
+                <ul className='flex gap-8'>
+                    {[
+                        { path: '/dashboard', label: 'Dashboard' },
+                        { path: '/dashboard/questions', label: 'Practice' },
+                        { path: '/dashboard/about', label: 'About' },
+                        { path: '/dashboard/how', label: 'How it works' },
+                    ].map((item) => (
+                        <li
+                            key={item.path}
+                            className={`px-4 py-2 rounded-lg transition-all duration-300 cursor-pointer
+                                relative overflow-hidden group
+                                ${path === item.path
+                                    ? 'text-white bg-gradient-to-r from-indigo-600 to-purple-600 shadow-md shadow-indigo-600/20'
+                                    : 'text-gray-300 hover:text-indigo-600'}`}
+                        >
+                            {item.label}
+                            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-indigo-600 transform transition-transform duration-300 
+                                ${path === item.path ? 'translate-x-0' : '-translate-x-full group-hover:translate-x-0'}`}>
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+
+            <div className="flex items-center gap-4 relative">
+                <div className="p-1 rounded-full bg-gradient-to-r from-[#4845d2] to-[#6563ff] hover:shadow-lg hover:shadow-[#4845d2]/20 transition-all duration-300">
+                    <UserButton
+                        appearance={{
+                            elements: {
+                                avatarBox: "h-9 w-9 hover:scale-105 transition-transform duration-300",
+                            }
+                        }} />
+                </div>
+            </div>
         </div>
-    )
+    );
+};
+
+// Add these styles to your globals.css or create a new style tag in your Header component
+const styles = `
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-10px) translateX(10px);
+    }
+    50% {
+        transform: translateY(0) translateX(20px);
+    }
+    75% {
+        transform: translateY(10px) translateX(10px);
+    }
 }
+
+@keyframes galaxy {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-wave {
+    animation: wave 20s ease-in-out infinite;
+}
+
+.animate-galaxy {
+    animation: galaxy 10s ease-in-out infinite;
+}
+`;
+
+// Add style tag to the component
+Header.styles = <style>{styles}</style>;
 
 export default Header

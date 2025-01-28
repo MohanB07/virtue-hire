@@ -63,92 +63,109 @@ function AddNewInterview() {
 
     return (
         <div>
-        {/* Add New Button */}
-        <div
-            className="p-10 border rounded-lg bg-secondary
-            hover:scale-105 hover:shadow-md cursor-pointer transition-all"
-            onClick={() => setOpenDialog(true)}
-        >
-            <h2 className="text-lg text-center">+ Add New</h2>
-        </div>
+            {/* Add New Button */}
+            <div
+                className="p-8 border rounded-lg bg-white/5 backdrop-blur-sm
+                hover:scale-105 hover:shadow-xl cursor-pointer transition-all duration-300
+                border-gray-800/10 shadow-lg"
+                onClick={() => setOpenDialog(true)}
+            >
+                <h2 className="text-lg text-center font-semibold">+ Add New</h2>
+            </div>
 
-        {/* Dialog Component */}
-        <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-            {/* Form Inside the Dialog */}
-            <form onSubmit={onSubmit}>
-            <div style={dialogStyles.formContainer}>
-            {/* Title */}
-            <h3 style={dialogStyles.title}>Tell me more about Job and Interview</h3>
+            {/* Dialog Component */}
+            <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+                {/* Form Inside the Dialog */}
+                <form onSubmit={onSubmit} className="bg-gradient-to-br from-gray-50 to-gray-100 p-4 rounded-xl mt-5">
+                    <div className="space-y-4">
+                        {/* Title */}
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                            Tell me more about Job and Interview
+                        </h3>
 
-            {/* Description */}
-            <p style={dialogStyles.description}>
-                Add details about job position, your skills, and years of experience
-            </p>
+                        {/* Description */}
+                        <p className="text-gray-600 text-xs">
+                            Add details about job position, your skills, and years of experience
+                        </p>
 
-            {/* Job Position Input */}
-            <label htmlFor="jobPosition" style={dialogStyles.inputLabel}>
-                Job Position / Role name
-            </label>
-            <input
-                type="text"
-                id="jobPosition"
-                style={dialogStyles.inputField}
-                placeholder="Enter job position"
-                required
-                onChange={(e) => setJobPosition(e.target.value)}
-            />
+                        {/* Form Fields */}
+                        <div className="space-y-3">
+                            {/* Job Position Input */}
+                            <div className="space-y-2">
+                                <label htmlFor="jobPosition" className="block text-sm font-medium text-gray-700">
+                                    Job Position / Role name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="jobPosition"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50 backdrop-blur-sm"
+                                    placeholder="Enter job position"
+                                    required
+                                    onChange={(e) => setJobPosition(e.target.value)}
+                                />
+                            </div>
 
-            {/* Job Description Input */}
-            <label htmlFor="jobDescription" style={dialogStyles.inputLabel}>
-                Job Description / Tech Stack (short)
-            </label>
-            <input
-                type="text"
-                id="jobDescription"
-                style={dialogStyles.inputField}
-                placeholder="Enter job description or tech stack"
-                required
-                onChange={(e) => setJobDescription(e.target.value)}
-            />
+                            {/* Job Description Input */}
+                            <div className="space-y-2">
+                                <label htmlFor="jobDescription" className="block text-sm font-medium text-gray-700">
+                                    Job Description / Tech Stack (short)
+                                </label>
+                                <input
+                                    type="text"
+                                    id="jobDescription"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50 backdrop-blur-sm"
+                                    placeholder="Enter job description or tech stack"
+                                    required
+                                    onChange={(e) => setJobDescription(e.target.value)}
+                                />
+                            </div>
 
-            {/* Years of Experience Input */}
-            <label htmlFor="experience" style={dialogStyles.inputLabel}>
-                No of Years Experience
-            </label>
-            <input
-                type="number"
-                id="experience"
-                style={dialogStyles.inputField}
-                placeholder="Enter years of experience"
-                required
-                onChange={(e) => setJobExperience(e.target.value)}
-            />
-
-            {/* Buttons */}
-            <div style={dialogStyles.buttonsContainer}>
-                <button
-                    type="button"
-                    style={dialogStyles.cancelButton}
-                    onClick={() => setOpenDialog(false)}
-                >
-                    Cancel
-                </button>
-                <button type="submit" style={dialogStyles.startButton} disabled={loading}>
-                    {loading ? (
-                    <div className="flex items-center">
-                        <LoaderCircle className="animate-spin mr-2" size={16} />
-                        Generating
+                            {/* Years of Experience Input */}
+                            <div className="space-y-2">
+                                <label htmlFor="experience" className="block text-sm font-medium text-gray-700">
+                                    No of Years Experience
+                                </label>
+                                <input
+                                    type="number"
+                                    id="experience"
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-white/50 backdrop-blur-sm"
+                                    placeholder="Enter years of experience"
+                                    required
+                                    onChange={(e) => setJobExperience(e.target.value)}
+                                />
+                            </div>
                         </div>
-                        ) : (
-                        'Start Interview'
-                    )}
-                </button>
+
+                        {/* Buttons */}
+                        <div className="flex justify-end space-x-4 pt-4">
+                            <button
+                                type="button"
+                                className="px-6 py-2 rounded-lg text-gray-700 bg-gray-100 hover:bg-gray-200 transition-all duration-200 font-medium"
+                                onClick={() => setOpenDialog(false)}
+                            >
+                                Cancel
+                            </button>
+                            <button 
+                                type="submit" 
+                                className="px-6 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[140px]"
+                                disabled={loading}
+                            >
+                                {loading ? (
+                                    <div className="flex items-center">
+                                        <LoaderCircle className="animate-spin mr-2" size={16} />
+                                        Generating
+                                    </div>
+                                ) : (
+                                    'Start Interview'
+                                )}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </Dialog>
             </div>
-            </div>
-        </form>
-        </Dialog>
-        </div>
     );
+
     }
 
     // Custom Styles for Form and Dialog Content

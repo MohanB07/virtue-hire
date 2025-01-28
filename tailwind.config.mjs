@@ -80,6 +80,7 @@ export default {
 			  from: { transform: "translateY(0)" },
 			  to: { transform: "translateY(100%)" },
 			},
+			
 		  },
   	}
   },
