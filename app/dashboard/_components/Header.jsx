@@ -23,8 +23,9 @@ function Header() {
             </div>
 
              {/* Logo Section */}
-             <div className="flex items-center gap-3 relative z-10">
-                <div className="group bg-white/5 p-2 rounded-lg backdrop-blur-md">
+             <div className="flex items-center gap-3 relative z-10 ">
+                <div className="group p-1 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-purple-600 hover:to-indigo-600 transition-all duration-500 shadow-lg hover:shadow-indigo-500/50 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     <img
                         src={'./tempLogo.svg'}
                         alt="logo"
