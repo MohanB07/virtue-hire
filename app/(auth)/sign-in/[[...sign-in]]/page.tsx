@@ -1,6 +1,11 @@
+"use client"
 import { SignIn } from '@clerk/nextjs';
+import { useSearchParams } from "next/navigation";
 
 export default function Page() {
+
+    const searchParams = useSearchParams();
+    const redirectUrl = searchParams.get("redirect_url") || "/dashboard";
 
     return (
     <section className="bg-white text-black">
@@ -59,7 +64,7 @@ export default function Page() {
                 quibusdam aperiam voluptatum.
             </p>
             </div>
-                    <SignIn />
+                    <SignIn forceRedirectUrl={redirectUrl} />
         </div>
         </main>
     </div>

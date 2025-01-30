@@ -64,7 +64,7 @@ function Header() {
             </nav>
 
             <div className="flex items-center gap-4 relative">
-                <div className="p-1 rounded-full bg-gradient-to-r from-[#4845d2] to-[#6563ff] hover:shadow-lg hover:shadow-[#4845d2]/20 transition-all duration-300">
+                <div className="p-1 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:shadow-lg hover:shadow-indigo-600/20 transition-all duration-300 transform hover:scale-110">
                     <UserButton
                         appearance={{
                             elements: {

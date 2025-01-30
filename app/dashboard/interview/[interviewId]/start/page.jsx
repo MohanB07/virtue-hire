@@ -6,6 +6,7 @@ import { db } from "../../../../../utils/db";
 import { MockInterview } from "../../../../../utils/schema";
 import QuestionsSection from "./_components/QuestionsSection";
 import RecordAnswerSection from "./_components/RecordAnswerSection";
+
 function StartInterview() {
     const params = useParams();
     const [interviewData, setInterviewData] = useState();
@@ -20,7 +21,11 @@ function StartInterview() {
             try {
                 const result = await db.select().from(MockInterview).where(eq(MockInterview.mockId, id));
 
-                const jsonMockResponse = JSON.parse(result[0].jsonMockResp)
+                console.log("Raw JSON response from start page : ", result[0].jsonMockResp);
+                
+                const cleanedJsonString = result[0].jsonMockResp.trim().replace(/```/g, "");
+                const jsonMockResponse = JSON.parse(cleanedJsonString);
+
                 setMockInterviewQuestions(jsonMockResponse.interviewQuestions || jsonMockResponse.interview_questions);
                 console.log("Mock JSON response : ", jsonMockResponse);
                 setInterviewData(result[0]);
@@ -30,7 +35,7 @@ function StartInterview() {
     };
 
     return (
-        <div>
+        <div >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Questions */}
             <QuestionsSection

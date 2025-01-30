@@ -11,8 +11,6 @@ function SplashScreen({ onFinish }) {
         return () => clearTimeout(timer);
     }, [onFinish]);
 
-    // ... existing code ...
-
     const styles = {
         container: {
             position: "fixed",
@@ -87,10 +85,10 @@ function SplashScreen({ onFinish }) {
         <>
             <style>{animationStyles}</style>
             <div style={styles.container}>
-                <img 
-                    src="./tempLogo.svg" 
-                    width={100} 
-                    height={200} 
+                <img
+                    src="./tempLogo.svg"
+                    width={100}
+                    height={200}
                     style={styles.logo}
                     alt="Logo"
                 />
