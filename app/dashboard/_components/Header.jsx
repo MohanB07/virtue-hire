@@ -33,7 +33,7 @@ function Header() {
                         height={42}
                         className="hover:scale-110 transition-all duration-300 hover:rotate-3 cursor-pointer" />
                 </div>
-                <span className="font-semibold text-white text-lg hidden sm:block hover:text-[#4845d2] transition-colors duration-300">
+                <span className="font-semibold text-white text-2xl hidden sm:block hover:text-[#4845d2] transition-colors duration-300">
                     VirtueHire
                 </span>
             </div>
@@ -51,11 +51,11 @@ function Header() {
                             className={`px-4 py-2 rounded-lg transition-all duration-300 cursor-pointer
                                 relative overflow-hidden group
                                 ${path === item.path
-                                    ? 'text-white bg-gradient-to-r from-indigo-600 to-purple-600 shadow-md shadow-indigo-600/20'
-                                    : 'text-gray-300 hover:text-indigo-600'}`}
+                                    ? 'text-white text-lg font-bold bg-gradient-to-r from-indigo-600 to-purple-600 shadow-md shadow-indigo-600/20'
+                                    : 'text-gray-300 text-lg hover:text-indigo-600'}`}
                         >
                             {item.label}
-                            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-indigo-600 transform transition-transform duration-300 
+                            <span className={`absolute bottom-0 left-0 w-full h-[2px] bg-indigo-600 transform transition-transform duration-300
                                 ${path === item.path ? 'translate-x-0' : '-translate-x-full group-hover:translate-x-0'}`}>
                             </span>
                         </li>

@@ -13,6 +13,7 @@ function QuestionsSection({ mockInterviewQuestions, activeQuestionIndex }) {
     }
 
     useEffect(() => {
+        console.log("from start page")
         console.log("from q sec : " + mockInterviewQuestions)
     },[])
 
@@ -22,20 +23,28 @@ function QuestionsSection({ mockInterviewQuestions, activeQuestionIndex }) {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 {mockInterviewQuestions && mockInterviewQuestions.map((question, index) => (
                     <h2 key={index} className={`p-2 bg-secondary rounded-full
-                    text-xs md:text-sm text-center cursor-pointer
-                    ${activeQuestionIndex==index&&'!bg-[#4845d2] text-white'}`}> Question #{index+1} </h2>
+                    text-sm font-semibold md:text-sm text-center cursor-pointer
+                    ${activeQuestionIndex==index&&'bg-gradient-to-r from-indigo-600 to-purple-600 font-bold text-white'}`}> Question #{index+1} </h2>
                 ))}
 
             </div>
-            <h2 className="my-5 text-sm md:text-lg"> {mockInterviewQuestions[activeQuestionIndex]?.question} </h2>
-            <Volume2 className="cursor-pointer" onClick={() => textToSpeech(mockInterviewQuestions[activeQuestionIndex]?.question)} />
-
+            <h2 className="my-5 text-lg font-bold md:text-lg"> {mockInterviewQuestions[activeQuestionIndex]?.question} </h2>
+            <Volume2
+            className="cursor-pointer rounded-lg border-black"
+            onClick={() => {
+                if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel(); // Stop TTS if it's already playing
+                } else {
+                textToSpeech(mockInterviewQuestions[activeQuestionIndex]?.question);
+                }
+            }}
+            />
             <div className="border rounded-lg p-5 bg-blue-100 mt-20">
                 <h2 className="flex gap-2 items-center text-primary">
                     <Lightbulb />
-                    <strong> NOTE: </strong>
+                    <strong className="text-md"> NOTE: </strong>
                 </h2>
-                <h2 className="text-sm text-primary my-2">
+                <h2 className="text-md text-justify text-primary my-2">
                     {process.env.NEXT_PUBLIC_QUESTION_NOTE}
                 </h2>
             </div>

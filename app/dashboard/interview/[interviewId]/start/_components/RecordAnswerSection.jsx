@@ -23,10 +23,11 @@ function RecordAnswerSection() {
     });
 
     useEffect(() => {
-        results.map((result) => {
-            setUserAnswer(prevAns => prevAns + result?.transcript)
-        })
-    },[results])
+        // Clear previous answer when results change
+        if (results.length) {
+            setUserAnswer(results[results.length - 1]?.transcript);  // Only store the latest result to prevent appending
+        }
+    }, [results]);
 
     const SaveUserAnswer = () => {
         if(isRecording) {
@@ -41,6 +42,7 @@ function RecordAnswerSection() {
             const feedbackPrompt = "Question:"
 
         } else {
+            setUserAnswer('');
             startSpeechToText()
         }
     }

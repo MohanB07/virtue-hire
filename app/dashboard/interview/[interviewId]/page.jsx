@@ -52,8 +52,17 @@ export function Interview() {
     };
 
     return (
-        <div className="my-10">
-            <h2 className="font-bold text-2xl -mt-4">Let's Get Started</h2>
+        <div className="my-8">
+            <div className="relative mb-4">
+                    <div className="absolute -left-3 top-1/2 w-1.5 h-12 bg-[#4845d2] rounded-full transform -translate-y-1/2
+                        animate-pulse"/>
+                    <div>
+                        <h2 className='font-bold text-3xl bg-gradient-to-r from-[#4845d2] to-[#6461ff] bg-clip-text text-transparent
+                            transform transition-all duration-300 hover:scale-102 hover:tracking-wider cursor-default'>
+                            Let's Get Started!
+                        </h2>
+                    </div>
+                </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                 <div className="flex flex-col my-5 gap-5">
                     <div className="flex flex-col p-5 rounded-lg border gap-5">
@@ -71,8 +80,8 @@ export function Interview() {
                         </h2>
                     </div>
                     <div className="p-5 border rounded-lg border-yellow-300 bg-yellow-100">
-                        <h2 className="flex gap-2 items-center text-yellow-500"> <Lightbulb /><strong>Information</strong> </h2>
-                        <h2 className="mt-3 text-yellow-500 -px-4"> {process.env.NEXT_PUBLIC_INFORMATION} </h2>
+                        <h2 className="flex gap-2 items-center text-yellow-500"> <Lightbulb /><strong className="text-lg">Information</strong> </h2>
+                        <h2 className="text-justify text-base mt-3 text-yellow-500 -px-4"> {process.env.NEXT_PUBLIC_INFORMATION} </h2>
                     </div>
                 </div>
                 <div>
@@ -99,10 +108,10 @@ export function Interview() {
             <div className="flex justify-end mt-4">
                 {webCamEnabled ? (
                     <Link href={'/dashboard/interview/' + params?.interviewId + '/start'}>
-                        <Button className=" bg-[#4845d2] px-6 py-2">Start Interview</Button>
+                        <Button className="text-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-2">Start Interview</Button>
                     </Link>
                 ) : (
-                    <Button className=" bg-[#4845d2] px-6 py-2" onClick={handleStartInterview}>
+                    <Button className="text-xl bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-2" onClick={handleStartInterview}>
                         Start Interview
                     </Button>
                 )}

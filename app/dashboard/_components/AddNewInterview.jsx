@@ -31,7 +31,7 @@ function AddNewInterview() {
 
         const MockJsonResponse = (result.response.text()).replace('```json', '').replace('```', '');
 
-        // console.log(JSON.parse(MockJsonResponse));
+        console.log(JSON.parse(MockJsonResponse));
         setJsonResponse(MockJsonResponse);
 
         if(MockJsonResponse){
@@ -68,12 +68,12 @@ function AddNewInterview() {
         <div>
             {/* Add New Button */}
             <div
-                className="p-8 border rounded-lg bg-white/5 backdrop-blur-sm
+                className="p-8 border rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 backdrop-blur-sm
                 hover:scale-105 hover:shadow-xl cursor-pointer transition-all duration-300
                 border-gray-800/10 shadow-lg"
                 onClick={() => setOpenDialog(true)}
             >
-                <h2 className="text-lg text-center font-semibold">+ Add New</h2>
+                <h2 className="text-center font-bold text-2xl text-white">+ Add New</h2>
             </div>
 
             {/* Dialog Component */}

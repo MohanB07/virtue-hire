@@ -10,12 +10,12 @@ export default clerkMiddleware(async (auth, req) => {
     if (isProtectedRoute(req)) {
         // If user is authenticated, redirect to /dashboard
         if (auth.user) {
-            console.log("User is authenticated, redirecting to /dashboard");
+            // console.log("User is authenticated, redirecting to /dashboard");
             return Response.redirect('/dashboard');
         }
 
         // Protect the route if the user is not authenticated
-        console.log("User not authenticated, protecting route");
+        // console.log("User not authenticated, protecting route");
         await auth.protect();
     }
 });
