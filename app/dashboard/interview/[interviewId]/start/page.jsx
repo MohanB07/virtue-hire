@@ -24,17 +24,12 @@ function StartInterview() {
                 console.log("Raw JSON response from start page : ", result[0].jsonMockResp);
                 
                 const cleanedJsonString = result[0].jsonMockResp
-                .trim() // Remove leading/trailing spaces
-                .replace(/^```json/, "") // Remove leading ```json if it exists
-                .replace(/```$/, ""); // Remove trailing ``` if it exists
+                .trim()
+                .replace(/^```json/, "")
+                .replace(/```$/, "");
 
-                try {
-                const jsonArray = JSON.parse(cleanedJsonString); // Parse JSON
-                const jsonMockResponse = JSON.stringify(jsonArray, null, 2); // Pretty format
+                const jsonMockResponse = JSON.parse(cleanedJsonString);
                 console.log("Mock JSON response:", jsonMockResponse);
-                } catch (error) {
-                console.error("Error parsing JSON:", error.message);
-                }
 
                 setMockInterviewQuestions( jsonMockResponse.interviewQuestions || jsonMockResponse.interview_questions || jsonMockResponse.question );
                 
